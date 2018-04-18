@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yav.offshore.skillsheet.orm.po.EmployeeSkill">
+  <!-- auto-generated mappings -->
+  <sql id="columns">ID, STATUS, SKILL_DETAIL_ID, EMPLOYEE_ID, PROJECT_ID, EVALUATION_TYPE, DESCRIPTION, SKILL_LEVEL_ID, EXP_VALUE, GRADE_VALUE, LAST_MODIFIER, LAST_MODIFIED_TIME, LAST_ACCEPTED_TIME, ACTIVE_FLG, INSERT_DATETIME, UPDATE_DATETIME</sql>
+
+  <select id="get" parameterType="long" resultMap="EmployeeSkillResult">
+    select * from employee_skill where ID=#{id} and STATUS=2
+  </select>
+  
+  <select id="getByEmployeeId" parameterType="int" resultMap="EmployeeSkillResult">
+    select * from employee_skill where EMPLOYEE_ID=#{employeeId} and STATUS=2
+  </select>
+  
+  <select id="getAll"  resultMap="EmployeeSkillResult">
+    select * from employee_skill and STATUS=2;
+  </select>
+  
+	<resultMap type='EmployeeSkill' id='EmployeeSkillResult'>
+	    <id property='id' column='ID'/>
+	    <result property='status' column='STATUS'/>  
+	    <result property='skillDetailId' column='SKILL_DETAIL_ID'/>
+	    <result property='employeeId' column='EMPLOYEE_ID'/>
+	    <result property='projectId' column='PROJECT_ID'/>
+	    <result property='evaluationType' column='EVALUATION_TYPE'/>  
+	    <result property='description' column='DESCRIPTION'/>  
+	    <result property='skillLevelId' column='SKILL_LEVEL_ID'/>  
+	    <result property='expValue' column='EXP_VALUE'/>  
+	    <result property='gradeValue' column='GRADE_VALUE'/>  
+	    <result property='lastModifier' column='LAST_MODIFIER'/>  
+	    <result property='lastModifiedTime' column='LAST_MODIFIED_TIME'/>  
+	    <result property='lastAcceptedTime' column='LAST_ACCEPTED_TIME'/>  
+	    <result property='activeFlg' column='ACTIVE_FLG'/>  
+	    <result property='insertDatetime' column='INSERT_DATETIME'/>  
+	    <result property='updateDatetime' column='UPDATE_DATETIME'/> 
+  </resultMap>
+</mapper>

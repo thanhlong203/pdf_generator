@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="skillsheet-exporter:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/skillsheet_exporter_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="skillsheet-exporter/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="skillsheet-exporter" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

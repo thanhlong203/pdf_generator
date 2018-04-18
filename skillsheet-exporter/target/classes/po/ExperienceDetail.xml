@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yav.offshore.skillsheet.orm.po.ExperienceDetail">
+  <!-- auto-generated mappings -->
+  <sql id="columns">ID, NAME, TYPE, EXP_GROUP_ID, SUB_GROUP, DEPENDENT_ID, DEPENDENT_GROUP_ID, UNIT, CHECK_BOX, DISPLAY_ORDER, ACTIVE_FLG, INSERT_DATETIME, UPDATE_DATETIME</sql>
+
+  <select id="get" parameterType="long" resultMap="ExperienceDetailResult">
+    select * from experience_detail where ID=#{id}
+  </select>
+  
+  <select id="getAll"  resultMap="ExperienceDetailResult">
+    select * from experience_detail;
+  </select>
+  
+	<resultMap type='ExperienceDetail' id='ExperienceDetailResult'>
+	    <id property='id' column='ID'/>
+	    <result property='name' column='NAME'/>
+	    <result property='type' column='TYPE'/>
+	    <result property='expGroupId' column='EXP_GROUP_ID'/>
+	    <result property='subGroup' column='SUB_GROUP'/>  
+	    <result property='dependentId' column='DEPENDENT_ID'/>  
+	    <result property='dependentGroupId' column='DEPENDENT_GROUP_ID'/>  
+	    <result property='unit' column='UNIT'/>  
+	    <result property='checkBox' column='CHECK_BOX'/>  
+	    <result property='displayOrder' column='DISPLAY_ORDER'/>  
+	    <result property='activeFlg' column='ACTIVE_FLG'/>  
+	    <result property='insertDatetime' column='INSERT_DATETIME'/>  
+	    <result property='updateDatetime' column='UPDATE_DATETIME'/>  
+  </resultMap>
+  
+</mapper>

@@ -1,0 +1,72 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="skilldetaildao" class="yav.offshore.skillsheet.dao.impl.SkillDetailDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="experiencedetaildao" class="yav.offshore.skillsheet.dao.impl.ExperienceDetailDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="employeeexperiencedetaildao" class="yav.offshore.skillsheet.dao.impl.EmployeeExperienceDetailDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="employeeskilldao" class="yav.offshore.skillsheet.dao.impl.EmployeeSkillDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="skilldetailservice" class="yav.offshore.skillsheet.service.impl.SkillDetailServiceImpl">
+		<property name="skillDetailDao" ref="skilldetaildao" />
+	</bean>
+	
+	<bean id="experiencedetailservice" class="yav.offshore.skillsheet.service.impl.ExperienceDetailServiceImpl">
+		<property name="experienceDetailDao" ref="experiencedetaildao" />
+	</bean>
+	
+	<bean id="employeeexperiencedetailservice" class="yav.offshore.skillsheet.service.impl.EmployeeExperienceDetailServiceImpl">
+		<property name="employeeExperienceDetailDao" ref="employeeexperiencedetaildao" />
+	</bean>
+	
+	<bean id="employeeskillservice" class="yav.offshore.skillsheet.service.impl.EmployeeSkillServiceImpl">
+		<property name="employeeSkillDao" ref="employeeskilldao" />
+	</bean>
+	
+	<bean id="experiencecache" class="yav.offshore.skillsheet.cache.impl.ExperienceCacheImpl">
+		<property name="experienceDetailService" ref="experiencedetailservice" />
+	</bean>
+	
+	<bean id="experienceadministrator" class="yav.offshore.skillsheet.administrator.impl.ExperienceDetailAdministratorImpl">
+		<property name="experienceDetailService" ref="experiencedetailservice" />
+		<property name="experienceCache" ref="experiencecache" />
+	</bean>
+	
+	<bean id="skilldetailcache" class="yav.offshore.skillsheet.cache.impl.SkillDetailCacheImpl">
+		<property name="skillDetailService" ref="skilldetailservice" />
+	</bean>
+	
+	<bean id="skilldetailadministrator" class="yav.offshore.skillsheet.administrator.impl.SkillDetailAdministratorImpl">
+		<property name="skillDetailService" ref="skilldetailservice" />
+		<property name="skillDetailCache" ref="skilldetailcache" />
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	  <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	  <property name="url" value="jdbc:mysql://10.1.40.32:3306/SKILL_MNG?autoReconnect=true"/>
+	  <property name="username" value="app"/>
+	  <property name="password" value="localdev123"/>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource" />
+	  <property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	  <property name="dataSource" ref="dataSource" />
+	</bean>
+	
+</beans>
