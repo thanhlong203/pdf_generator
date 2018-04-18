@@ -9,6 +9,7 @@
   <typeAlias type='yav.offshore.skillsheet.orm.po.ExperienceDetail' alias='ExperienceDetail'></typeAlias>
   <typeAlias type='yav.offshore.skillsheet.orm.po.EmployeeExperienceDetail' alias='EmployeeExperienceDetail'></typeAlias>
   <typeAlias type='yav.offshore.skillsheet.orm.po.EmployeeSkill' alias='EmployeeSkill'></typeAlias>
+  <typeAlias type='yav.offshore.skillsheet.orm.po.EmployeeProfile' alias='EmployeeProfile'></typeAlias>
 </typeAliases>
 <environments default='development'>
   <environment id='development'>
@@ -26,5 +27,6 @@
 	 <mapper resource='po/ExperienceDetail.xml'/>
 	 <mapper resource='po/EmployeeExperienceDetail.xml'/>
 	 <mapper resource='po/EmployeeSkill.xml'/>
+	 <mapper resource='po/EmployeeProfile.xml'/>
 </mappers>
 </configuration>

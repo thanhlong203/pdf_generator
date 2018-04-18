@@ -2,6 +2,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="employeeProfileDao" class="yav.offshore.skillsheet.dao.impl.EmployeeProfileDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 
 	<bean id="skilldetaildao" class="yav.offshore.skillsheet.dao.impl.SkillDetailDaoImpl">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
@@ -17,6 +21,10 @@
 	
 	<bean id="employeeskilldao" class="yav.offshore.skillsheet.dao.impl.EmployeeSkillDaoImpl">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id = "employeeProfileService" class = "yav.offshore.skillsheet.service.impl.EmployeeProfileServiceImpl">
+		<property name="employeeProfileDao" ref="employeeProfileDao"/>
 	</bean>
 	
 	<bean id="skilldetailservice" class="yav.offshore.skillsheet.service.impl.SkillDetailServiceImpl">
